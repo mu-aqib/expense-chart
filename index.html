@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Expenses chart component</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <main class="chart">
+    <div class="char-header">
+      <div>
+        <p>My balance</p>
+        <h1>$921.48</h1>
+      </div>
+      <img src="./images/logo.svg" alt="dark-logo">
+    </div>
+
+    <div class="chart-body">
+      <h2 class="text-dark-brown mb-3">Spending - Last 7 days</h2>
+      <canvas id="expense_chart"></canvas>
+      <hr>
+      <div class="chart-footer">
+        <p class="text-light-brown">Total this month</p>
+        <div>
+          <h1 class="text-dark-brown">$478.33</h1>
+          <div>
+            <h5 class="text-dark-brown">+2.4%</h5>
+            <p class="text-light-brown">from last month</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" crossorigin="anonymous"></script>
+  <script>
+    // IIFE arrow function 
+    (() => {
+      let canvas = document.querySelector('#expense_chart');
+      let chart = new Chart(canvas, {
+        type: 'bar',
+        data: {
+          labels: ['mon', 'tue', 'web', 'thu', 'fri', 'sat', 'sun', ],
+          datasets: [{
+            labels: "hidden",
+            data: [90, 70, 30, 35, 35, 50, 29],
+            backgroundColor: ['#ec775f', '#ec775f', '#76b5bc', '#ec775f', '#ec775f', '#ec775f', '#ec775f']
+          }]
+        },
+
+        options: {
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+                drawBorder: false
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+                drawBorder: false,
+              },
+              ticks: {
+                display: false,
+              }
+            }
+          },
+          plugins:{
+            legend:{
+              display: false
+            }
+          }
+          
+        }
+      })
+
+    })()
+  </script>
+</body>
+
+</html>
