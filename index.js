@@ -4,9 +4,10 @@ async function fetchData() {
         days: new Array(),
         amount: new Array()
     };
-    let expenses = await fetch('./data.json');
+    let expenses = await fetch('http://localhost:3000/data');
     let res = await expenses.json()
     res.forEach(element => {
+        console.log(element)
         data.days.push(element.day)
         data.amount.push(element.amount)
     });
